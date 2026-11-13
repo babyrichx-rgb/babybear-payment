@@ -333,10 +333,9 @@
             </div>
             <!-- Notice / Instructions -->
             <div class="p-4 bg-cream-100/80 rounded-2xl border border-pinksoft-200/70 text-xs text-browntext-light text-center space-y-1">
-                <p class="font-semibold text-browntext"><i class="fa-solid fa-circle-info text-pinksoft-500 mr-1"></i> คำแนะนำหลังโอนเงินเสร็จสิ้น</p>
-                <p>เมื่อโอนเงินเสร็จเรียบร้อยแล้ว กรุณาส่งสลิปการโอนเงินกลับมาทางแชทของร้านค้า เพื่อให้แอดมินตรวจสอบนะคะ 🙏</p>
-                <p>เช็คชื้อก่อนโอน</p>
-                <p>โอนแล้วแจ้งสลิปทุกครั้งนะคะ</p>
+                <p class="font-semibold text-browntext"><i class="fa-solid fa-circle-info text-pinksoft-500 mr-1"></i> คำแนะนำก่อนโอนเงิน</p>
+                <p>เโปรดเช็คชื่อบัญชีทุกครั้งก่อนโอนเงิน ส่งสลิปทุกครั้งหลังโอนเงิน</p>
+                <p>โอนผิด ไม่รับผิดชอบทถุกกรณี</p>
             </div>
             <!-- Contact Us -->
             <div class="p-5 bg-cream-100/80 rounded-3xl border border-pinksoft-200/80 text-center space-y-4">
@@ -413,10 +412,6 @@
                     <div>
                         <label class="block text-xs font-semibold text-browntext mb-1">ชื่อร้านค้า (Shop Name)</label>
                         <input type="text" id="adminShopName" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-pinksoft-200 focus:outline-none focus:ring-2 focus:ring-pinksoft-500 bg-cream-50 text-browntext" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-browntext mb-1">คำโปรย / ข้อความต้อนรับ (Tagline)</label>
-                        <input type="text" id="adminShopTagline" class="w-full px-3.5 py-2.5 text-sm rounded-xl border border-pinksoft-200 focus:outline-none focus:ring-2 focus:ring-pinksoft-500 bg-cream-50 text-browntext">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-browntext mb-1">รูปแบนเนอร์หน้าร้าน (Banner URL หรือ เลือกไฟล์อัปโหลด)</label>
@@ -524,8 +519,8 @@
     <!-- FOOTER -->
     <footer class="relative z-10 mt-8 border-t border-pinksoft-200/60 bg-cream-100/90 py-6 text-center text-xs text-browntext-muted">
         <div class="max-w-3xl mx-auto px-4 space-y-1">
-            <p class="font-medium text-browntext-light">✨ <span id="footerShopName">Babybear</span> Payment Hub</p>
-            <p class="text-[11px]">ออกแบบในโทนสีดำม่วงยามค่ำคืน สำหรับรองรับทุกอุปกรณ์</p>
+            <p class="font-medium text-browntext-light">✨ <span id="footerShopName">Babybear</span></p>
+            <p class="text-[11px]">Thank you for your support.</p>
         </div>
     </footer>
     <!-- TOAST NOTIFICATION COMPONENT -->
@@ -907,7 +902,6 @@
         // Populate Admin Form Fields
         function populateAdminForm() {
             document.getElementById('adminShopName').value = storeData.shopName || '';
-            document.getElementById('adminShopTagline').value = storeData.shopTagline || '';
             document.getElementById('adminBannerUrl').value = storeData.bannerUrl || '';
             document.getElementById('adminLogoUrl').value = storeData.logoUrl || '';
            
@@ -937,7 +931,7 @@
             const val = (id) => document.getElementById(id).value.trim();
             const next = {
                 shopName: val('adminShopName'),
-                shopTagline: val('adminShopTagline'),
+                shopTagline: storeData.shopTagline, // field removed from admin form; keep existing value
                 bannerUrl: val('adminBannerUrl'),
                 logoUrl: val('adminLogoUrl'),
                 bankName: val('adminBankName'),
